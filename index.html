@@ -75,11 +75,14 @@
                 </div>
             </div>
             <div class="right-messages-container">
-                <div class="right-messages">
-                    <div class="message sent">
+                <div class="right-messages"  >
+                    <div class = "message" 
+                    v-for = "curMessage in contacts[activeMessage].messages" 
+                    :class = "curMessage.status === 'received' ?  'received' : 'sent'"
+                    @click = "changeContact">
                         <div class="message-inner">
                             <span class="message-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eos blanditiis architecto expedita aspernatur quasi, et nobis aut officiis soluta voluptates nesciunt voluptate ipsa fuga rerum doloribus, unde laboriosam doloremque?
+                                {{curMessage.message}}
                             </span>
                             <div class="message-options">
                                 <i class="fa fa-chevron-down"></i>
@@ -91,12 +94,10 @@
                         </div>
                         <span class="message-time">16:13</span>
                     </div>
-                    <div class="message received">
+                    <!-- <div class="message received">
                         <div class="message-inner">
                             <span class="message-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eos blanditiis architecto expedita
-                                aspernatur quasi, et nobis aut officiis soluta voluptates nesciunt voluptate ipsa fuga rerum doloribus, unde
-                                laboriosam doloremque?
+                                Lorem
                             </span>
                             <div class="message-options">
                                 <i class="fa fa-chevron-down"></i>
@@ -107,7 +108,7 @@
                             </div>
                         </div>
                         <span class="message-time">16:15</span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="right-footer">

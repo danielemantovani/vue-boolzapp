@@ -42,7 +42,9 @@
                     name="search">
             </div>
             <div class="contacts">
-                <div class="contact" v-for = "curContact in contacts">
+                <div class="contact"
+                v-for = "(curContact, index) in contacts"
+                @click = "changeContact(index)">
                     <div class="contact-logo">
                         <img 
                         :src = "`assets/img/avatar${curContact.avatar}.jpg`"
@@ -79,7 +81,7 @@
                     <div class = "message" 
                     v-for = "curMessage in contacts[activeMessage].messages" 
                     :class = "curMessage.status === 'received' ?  'received' : 'sent'"
-                    @click = "changeContact">
+                    >
                         <div class="message-inner">
                             <span class="message-text">
                                 {{curMessage.message}}

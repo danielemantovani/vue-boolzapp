@@ -172,6 +172,9 @@ createApp({
     },
 
     methods: {
-        
+        changeContact: function (index){
+            console.log("Contatto", index);
+            this.activeMessage = index
+        }
     }
 }).mount("#app")

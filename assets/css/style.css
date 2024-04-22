@@ -283,7 +283,6 @@ body {
 .right .right-messages .message .message-options {
   cursor: pointer;
   position: relative;
-  height: 95px;
 }
 
 .right .right-messages .message .message-options .fa-chevron-down {
@@ -297,7 +296,6 @@ body {
   right: 0;
   bottom: -7px;
   width: 150px;
-  height: 80px;
   background: white;
   box-shadow: 0px 0px 40px -15px rgba(0, 0, 0, 0.75);
 }

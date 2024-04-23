@@ -4,6 +4,7 @@ createApp({
     data() {
         return {
             activeMessage: 0,
+            search: '',
             newMessage: {
                 date: '',
                 massage: '',
@@ -178,27 +179,37 @@ createApp({
     },
 
     methods: {
-        changeContact: function (clickIndex){
+        changeContact: function (clickIndex) {
             console.log("Contatto", clickIndex);
             this.activeMessage = clickIndex
         },
 
-        sendMessage: function (){
-            if ( this.newMessage.message !== ""){
-                const copyMessages = {...this.newMessage}
+        sendMessage: function () {
+            if (this.newMessage.message !== "") {
+                const copyMessages = { ...this.newMessage }
                 this.contacts[this.activeMessage].messages.push(copyMessages);
                 this.newMessage.message = "";
-            }
 
-            setTimeout ( () => {
-                console.log("Ook");
-                const RecivedMessage = {
-                    date: "",
-                    message: "Ook",
-                    status: "received",
-                };
-                this.contacts[this.activeMessage].messages.push(RecivedMessage);
+                setTimeout(() => {
+                    console.log("Ook");
+                    const RecivedMessage = {
+                        date: "",
+                        message: "Ook",
+                        status: "received",
+                    };
+                    this.contacts[this.activeMessage].messages.push(RecivedMessage);
                 }, 1000);
+            }
+        },
+
+        filterUser() {
+            this.contacts.forEach(contact => {
+                if (contact.name.toLowerCase().includes(this.search.toLowerCase())) {
+                    contact.visible = true;
+                } else {
+                    contact.visible = false;
+                }
+            });
         }
     }
 }).mount("#app")

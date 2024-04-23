@@ -210,6 +210,12 @@ createApp({
                     contact.visible = false;
                 }
             });
+        },
+
+        deleteMessage (activeMessage, index) {
+            console.log("Elimina", activeMessage, index);
+            this.contacts[activeMessage].messages.splice(index, 1);
+            // this.activeMessage = index;
         }
     }
 }).mount("#app")

@@ -9,6 +9,8 @@ createApp({
                 massage: '',
                 status: 'sent'
             },
+            messageRecived: false,
+
             contacts: [
                 {
                     name: 'Michele',
@@ -172,7 +174,6 @@ createApp({
                     ],
                 }
             ]
-
         }
     },
 
@@ -188,6 +189,16 @@ createApp({
                 this.contacts[this.activeMessage].messages.push(copyMessages);
                 this.newMessage.message = "";
             }
+
+            setTimeout ( () => {
+                console.log("Ook");
+                const RecivedMessage = {
+                    date: "",
+                    message: "Ook",
+                    status: "received",
+                };
+                this.contacts[this.activeMessage].messages.push(RecivedMessage);
+                }, 1000);
         }
     }
 }).mount("#app")

@@ -4,6 +4,11 @@ createApp({
     data() {
         return {
             activeMessage: 0,
+            newMessage: {
+                date: '',
+                massage: '',
+                status: 'sent'
+            },
             contacts: [
                 {
                     name: 'Michele',
@@ -172,9 +177,22 @@ createApp({
     },
 
     methods: {
-        changeContact: function (index){
-            console.log("Contatto", index);
-            this.activeMessage = index
+        changeContact: function (clickIndex){
+            console.log("Contatto", clickIndex);
+            this.activeMessage = clickIndex
+        },
+
+        sendMessage: function (){
+            if ( this.newMessage.message !== ""){
+                const copyMessages = {...this.newMessage}
+                this.contacts[this.activeMessage].messages.push(copyMessages);
+                this.newMessage.message = "";
+            }
         }
     }
 }).mount("#app")
+
+
+
+
+

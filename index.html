@@ -65,8 +65,8 @@
         <div class="right">
             <div class="header-right">
                 <div class="header-right-logo">
-                    <img  :src="`assets/img/avatar${contacts[activeMessage].avatar}.jpg`" alt="">
-                    <h3><span id="header-right-contact-name">{{contacts[activeMessage].name}}</span> <br>
+                    <img  :src="`assets/img/avatar${contacts[activeChat].avatar}.jpg`" alt="">
+                    <h3><span id="header-right-contact-name">{{contacts[activeChat].name}}</span> <br>
                         <small class="time">Ultimo accesso oggi alle 16:26</small>
                     </h3>
                 </div>
@@ -79,7 +79,7 @@
             <div class="right-messages-container">
                 <div class="right-messages"  >
                     <div class = "message" 
-                    v-for = "(curMessage, i) in contacts[activeMessage].messages" 
+                    v-for = "(curMessage, i) in contacts[activeChat].messages" 
                     :class = "curMessage.status === 'received' ?  'received' : 'sent'"
                     >
                         <div class="message-inner">

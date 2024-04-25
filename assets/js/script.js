@@ -3,7 +3,7 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            activeMessage: 0,
+            activeChat: 0,
             search: '',
             newMessage: {
                 date: '',
@@ -181,13 +181,13 @@ createApp({
     methods: {
         changeContact: function (clickIndex) {
             console.log("Contatto", clickIndex);
-            this.activeMessage = clickIndex
+            this.activeChat = clickIndex
         },
 
         sendMessage: function () {
             if (this.newMessage.message !== "") {
                 const copyMessages = { ...this.newMessage }
-                this.contacts[this.activeMessage].messages.push(copyMessages);
+                this.contacts[this.activeChat].messages.push(copyMessages);
                 this.newMessage.message = "";
 
                 setTimeout(() => {
@@ -197,7 +197,7 @@ createApp({
                         message: "Ook",
                         status: "received",
                     };
-                    this.contacts[this.activeMessage].messages.push(RecivedMessage);
+                    this.contacts[this.activeChat].messages.push(RecivedMessage);
                 }, 1000);
             }
         },
@@ -213,8 +213,8 @@ createApp({
         },
 
         deleteMessage (index) {
-            console.log("Elimina", this.activeMessage, index);
-            this.contacts[this.activeMessage].messages.splice(index, 1); 
+            console.log("Elimina", this.activeChat, index);
+            this.contacts[this.activeChat].messages.splice(index, 1); 
         }
     }
 }).mount("#app")

@@ -7,7 +7,7 @@ createApp({
             search: '',
             newMessage: {
                 date: '',
-                massage: '',
+                message: '',
                 status: 'sent'
             },
             messageRecived: false,
@@ -202,7 +202,7 @@ createApp({
             }
         },
 
-        filterUser() {
+        filterUser () {
             this.contacts.forEach(contact => {
                 if (contact.name.toLowerCase().includes(this.search.toLowerCase())) {
                     contact.visible = true;
@@ -212,10 +212,9 @@ createApp({
             });
         },
 
-        deleteMessage (activeMessage, index) {
-            console.log("Elimina", activeMessage, index);
-            this.contacts[activeMessage].messages.splice(index, 1);
-            // this.activeMessage = index;
+        deleteMessage (index) {
+            console.log("Elimina", this.activeMessage, index);
+            this.contacts[this.activeMessage].messages.splice(index, 1); 
         }
     }
 }).mount("#app")

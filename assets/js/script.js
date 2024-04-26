@@ -11,7 +11,16 @@ createApp({
                 status: 'sent'
             },
             messageRecived: false,
-            
+            aphorism: [
+                "Sapere è potere",
+                "Fai ogni giorno una cosa che ti spaventa",
+                "Sai che c'è? Che avere il coraggio di tentare ed essere consapevole del rischio di fallire è una delle cose più difficili che puoi fare",
+                "Non importa quanto vai piano, l'importante è non fermarsi",
+                "Non aspettare. Non sarà mai il momento giusto",
+                "Il futuro dipende da ciò che fai oggi",
+                "Il modo migliore per fare una cosa è farla"
+            ],
+
             contacts: [
                 {
                     name: 'Michele',
@@ -179,11 +188,19 @@ createApp({
     },
 
     methods: {
+        // funzione per cambiare chat 
         changeContact: function (clickIndex) {
             console.log("Contatto", clickIndex);
             this.activeChat = clickIndex
         },
 
+        // funzione per generare risposte random utilizzando l'array aphorism, prima trovando la lunghezza e l'indice dell'array poi abbinando la frase corrispondente a quell'indice
+        randomAphorism: function (){
+            const indexAphorism = Math.floor(Math.random() * this.aphorism.length);
+            return this.aphorism [indexAphorism];
+        },
+
+        // funzione per inviare messaggio e impostare la risposta automatica 
         sendMessage: function () {
             if (this.newMessage.message !== "") {
                 const copyMessages = { ...this.newMessage }
@@ -193,7 +210,7 @@ createApp({
                     console.log("Ook");
                     const RecivedMessage = {
                         date: "",
-                        message: "Ook",
+                        message: this.randomAphorism (),
                         status: "received",
                     };
                     this.contacts[this.activeChat].messages.push(RecivedMessage);
@@ -201,6 +218,7 @@ createApp({
             }
         },
 
+        // fuznione cerca per trovare i contatti tramite l'input sopra la lista chat con il quale vogliamo comunicare
         filterUser () {
             this.contacts.forEach(contact => {
                 if (contact.name.toLowerCase().includes(this.search.toLowerCase())) {
@@ -211,6 +229,7 @@ createApp({
             });
         },
 
+        //funzione per eliminare i messaggi
         deleteMessage (index) {
             console.log("Elimina", this.activeChat, index);
             this.contacts[this.activeChat].messages.splice(index, 1); 

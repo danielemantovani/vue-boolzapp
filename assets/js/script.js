@@ -11,7 +11,7 @@ createApp({
                 status: 'sent'
             },
             messageRecived: false,
-
+            
             contacts: [
                 {
                     name: 'Michele',
@@ -189,7 +189,6 @@ createApp({
                 const copyMessages = { ...this.newMessage }
                 this.contacts[this.activeChat].messages.push(copyMessages);
                 this.newMessage.message = "";
-
                 setTimeout(() => {
                     console.log("Ook");
                     const RecivedMessage = {
@@ -215,7 +214,7 @@ createApp({
         deleteMessage (index) {
             console.log("Elimina", this.activeChat, index);
             this.contacts[this.activeChat].messages.splice(index, 1); 
-        }
+        },
     }
 }).mount("#app")
 
